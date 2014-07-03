@@ -9,7 +9,21 @@ class BlogHandler(webapp2.RequestHandler):
     def get(self,essay_id):
         pass
 
-class EditHandler(webapp2.RequestHandler):        
+class EditHandler(webapp2.RequestHandler): 
+    def get(self):
+        pass
+    
+    def post(self):
+        pass
+
+class BlogModel(ndb.Model):
+    date = ndb.DateProtery(auto_now_add=True)
+    title = ndb.StringProperty()
+    body = ndb.TextProtery
+    url = ndb.StringProtery()
+
+
+              
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
