@@ -9,7 +9,7 @@ JINJA_ESSAY = jinja2.Environment(
     extensions = ['jinja2.ext.autoescape'],
     autoescape=True)
 JINJA_MAIN = jinja2.Environment(
-    loader=jinja2.FileSystemLoader(os.path.dirname("/templates/essay")),
+    loader=jinja2.FileSystemLoader(os.path.dirname("/templates")),
     extensions = ['jinja2.ext.autoescape'],
     autoescape=True)
     
@@ -24,7 +24,7 @@ class BasicHandler(webapp2.RequestHandler):
         template = JINJA_ESSAY.get_template(template_name)
         self.response.out.write(template.render(**kwargs))   
 
-class MainHandler(webapp2.RequestHandler):
+class MainHandler(BasicHandler):
     def get(self):
         self.response.out.write('to be implemented')
 class BlogHandler(BasicHandler):
@@ -37,18 +37,16 @@ class BlogHandler(BasicHandler):
             post= q.to_dict()
             self.render("Essay.html",date=post['date'],url=post['url'],
                             body=post['body'],title= post['title'])
-            self.response.write("essay url = %s"% essay_id)
-class EssayList(webapp2.RequestHandler):
+class EssayList(BasicHandler):
     def get(self):
         essays = ndb.gql("SELECT * FROM PostModel").get(10)
         template= JINJA_ESSAY.get_template("EssayFront.html")
         self.response.out.write(template.render(
                                     [essay.to_dict() for essay in essays]))
 
-class EditHandler(webapp2.RequestHandler):
+class EditHandler(BasicHandler):
     def get(self):
-        template = JINJA_ESSAY.get_template("EssayEdit.html")
-        self.response.out.write(template.render())
+        self.render("EssayEdit.html")
     def post(self):
         title =self.request.POST.get('title')
         url = self.request.POST.get('url')
@@ -59,8 +57,8 @@ class EditHandler(webapp2.RequestHandler):
                         url2=url).get()
             if condition == None:
                 new_post = PostModel(title =title, body=body,url=url)
-                a= new_post.put()
-                #time.sleep(1)
+                new_post.put()
+                time.sleep(1)
                 self.redirect('/essays/%s'%url)
             else:
                 error="the url is already chosen please choose another one"
@@ -68,9 +66,8 @@ class EditHandler(webapp2.RequestHandler):
             error="all text must be filled"
 
         if error:
-            template = JINJA_ESSAY.get_template("EssayEdit.html")
-            self.response.out.write(template.render(title=title,
-            body=body,url=url,error=error))
+            self.render("EssayEdit.html",title=title,
+            body=body,url=url,error=error)
                    
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
