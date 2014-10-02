@@ -1,4 +1,5 @@
 import webapp2
+import time
 import os
 from google.appengine.ext import ndb
 import jinja2
@@ -17,32 +18,32 @@ class PostModel(ndb.Model):
     title = ndb.StringProperty()
     body = ndb.TextProperty()
     url = ndb.StringProperty()
-    
+
+class BasicHandler(webapp2.RequestHandler):
+    def render(self, template_name,**kwargs):
+        template = JINJA_ESSAY.get_template(template_name)
+        self.response.out.write(template.render(**kwargs))   
+
 class MainHandler(webapp2.RequestHandler):
     def get(self):
-        self.response.out.write('to be implemented')        
-class testHandler(webapp2.RequestHandler):
-    def get(self,*test):#, test_id):
-        print test
-        self.response.write("essay url = %s"% test)
-
-class BlogHandler(webapp2.RequestHandler):
+        self.response.out.write('to be implemented')
+class BlogHandler(BasicHandler):
     def get(self,essay_id):
         q= ndb.gql("SELECT * FROM PostModel WHERE url=:url2",
-        url2=essay_id).get()
-        #template= JINJA_ESSAY.get_template("Essay.html")
-        #self.response.out.write(template.render(q))
-
-        self.response.write("essay url = %s"% essay_id)
+            url2=essay_id).get()
+        if q == None:
+            self.response.write("essay does not exist")
+        else:
+            post= q.to_dict()
+            self.render("Essay.html",date=post['date'],url=post['url'],
+                            body=post['body'],title= post['title'])
+            self.response.write("essay url = %s"% essay_id)
 class EssayList(webapp2.RequestHandler):
-    def get(self):  
+    def get(self):
         essays = ndb.gql("SELECT * FROM PostModel").get(10)
         template= JINJA_ESSAY.get_template("EssayFront.html")
         self.response.out.write(template.render(
                                     [essay.to_dict() for essay in essays]))
-
-def get_from_response(**argws):
-    return [self.response.get(a) for a in argws]    
 
 class EditHandler(webapp2.RequestHandler):
     def get(self):
@@ -58,8 +59,9 @@ class EditHandler(webapp2.RequestHandler):
                         url2=url).get()
             if condition == None:
                 new_post = PostModel(title =title, body=body,url=url)
-                new_post.put()
-                self.redirect("/essays/%s"%url)
+                a= new_post.put()
+                #time.sleep(1)
+                self.redirect('/essays/%s'%url)
             else:
                 error="the url is already chosen please choose another one"
         else:
