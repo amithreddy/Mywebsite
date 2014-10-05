@@ -40,7 +40,6 @@ class EssayList(BasicHandler):
     def get(self):
         essays = ndb.gql("SELECT * FROM PostModel").fetch(10)
         essays = [essay.to_dict() for essay in essays]
-        print essays[0]
         self.render("EssayFront.html",essays=essays)
 
 class EditHandler(BasicHandler):
@@ -72,11 +71,13 @@ class EditHandler(BasicHandler):
             if args[0] == 'newpost':
                 post = ndb.gql("SELECT * FROM PostModel WHERE url=:url2",
                         url2=url).get()
-                if post['url'] == url:
-                    error="the url is already chosen please choose another one"
-                else:
+                if post == None:
                     new_post = PostModel(title =title, body=body,url=url)
                     new_post.put()
+                elif post['url'] == url:
+                    error="the url is already chosen please choose another one"
+                else:
+                    error = "something happend wrong"
             elif keyid != None:
                 update = PostModel.get_by_id(int(keyid))
                 dburl = ndb.gql("SELECT * FROM PostModel WHERE url=:url2",

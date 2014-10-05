@@ -3,4 +3,3 @@ This will be used to create essays
 
 
 When I enter html in jinja it autoescapes it
-after I recieve the text I should print 
