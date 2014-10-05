@@ -38,10 +38,10 @@ class BlogHandler(BasicHandler):
                             body=post['body'],title= post['title'])
 class EssayList(BasicHandler):
     def get(self):
-        essays = ndb.gql("SELECT * FROM PostModel").get(10)
-        template= JINJA_ESSAY.get_template("EssayFront.html")
-        self.response.out.write(template.render(
-                                    [essay.to_dict() for essay in essays]))
+        essays = ndb.gql("SELECT * FROM PostModel").fetch(10)
+        essays = [essay.to_dict() for essay in essays]
+        print essays[0]
+        self.render("EssayFront.html",essays=essays)
 
 class EditHandler(BasicHandler):
     def get(self,*args):
@@ -55,7 +55,6 @@ class EditHandler(BasicHandler):
             if q.get() !=None:
                 post= q.get().to_dict()
                 keyid= q.get().key.id()
-                
                 self.response.out.write("<h1>Editing %s</h1>"%post['title'])
                 self.render("EssayEdit.html",date=post['date'],
                             url=post['url'],keyid=keyid,
