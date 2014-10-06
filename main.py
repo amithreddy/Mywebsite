@@ -47,6 +47,8 @@ class EditHandler(BasicHandler):
         if args[0] == 'newpost':
             self.response.out.write("<h1>Newpost</h1>")
             self.render("EssayEdit.html", keyid=None)
+        elif args[0] == '':
+            self.render("Edit.html")
         else:
             q= ndb.gql("SELECT * FROM PostModel WHERE url=:url2",
             url2=args[0])
@@ -109,6 +111,7 @@ class EditHandler(BasicHandler):
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
     ('/essays/', EssayList),
+    ('/essays', EssayList),
     ('/essays/([^/]+)', BlogHandler),
     webapp2.Route(r'/essays/edit/<:[^?/]*>', handler=EditHandler),
 ], debug=True)
