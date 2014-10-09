@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>{% block essaytitle %} {% endblock %} | Amith M. Reddy</title>
+<link rel="stylesheet" type="text/css" href="/templates/stylesheets/test.css">
+{% block head %}
+{% endblock %} 
+</head>
+<body id={%block bodyid%} {%endblock%}>
+<div class="mastwrap">
+ <div class="masthead">
+   <header role="banner">
+   <a href="/" title="Amith M Reddy" rel="home">
+   Amith M Reddy
+   </a>
+   </header>
+   <nav class="">
+   <ul class="">
+	<li><a href="/" id=homenav>Home</a></li>
+	<li><a href="/essays" id="essaysnav">Essays</a><li>
+	<li><a href="/aboutme"id="about">About Me</a><li>
+   </ul>
+   </nav>
+ </div>
+
+</div>
+
+<div id="content">
+  {% block content %}
+  {% endblock %}
+  </div>
+</body>
+
+</html>
