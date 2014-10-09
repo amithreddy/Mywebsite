@@ -5,11 +5,7 @@ from google.appengine.ext import ndb
 import jinja2
 
 JINJA_ESSAY = jinja2.Environment(
-    loader=jinja2.FileSystemLoader(os.path.dirname("templates/essay/")),
-    extensions = ['jinja2.ext.autoescape'],
-    autoescape=True)
-JINJA_MAIN = jinja2.Environment(
-    loader=jinja2.FileSystemLoader(os.path.dirname("/templates")),
+    loader=jinja2.FileSystemLoader(os.path.dirname("templates/")),
     extensions = ['jinja2.ext.autoescape'],
     autoescape=True)
     
@@ -23,6 +19,23 @@ class BasicHandler(webapp2.RequestHandler):
     def render(self, template_name,**kwargs):
         template = JINJA_ESSAY.get_template(template_name)
         self.response.out.write(template.render(**kwargs))
+    def nav(self,**args):
+        nav ="<div id='nav'> ==NAV== </div>"
+        sub =""
+        for item in args[0]:
+            if item(0) == '':
+               sub+="<h1>%s%s</h1>"%item 
+            else:
+                sub+="<a herf = '%s'><h1>%s</h1></a>"%item
+        nav.replace("==NAV==",sub)
+        
+        breadcrumbs="<div id='breadcrumbs'>==BREAD==</div>"
+        sub=""
+        for item in args[1]:
+            sub+="<a herf='%s'>%s</a>"%item
+        breadcrumbs.replace("==BREAD==",sub)
+        return (nav,breadcrumbs)
+
 class MainHandler(BasicHandler):
     def get(self):
         self.response.out.write('to be implemented')
