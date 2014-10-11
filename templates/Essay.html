@@ -1,11 +1,17 @@
 {% extends "base.html" %}
 {% block essaytitle %}{{title}} {% endblock %}
-
 {% block bodyid%}"essay"{%endblock%}
-{% block content %}
-<div id="date">
+
+{% block title %}
 <h1>{{title}}</h1>
-{{date}}
+{%endblock%}
+
+{%block date%}
+<div id="date">
+{{date}}<br/>
 </div>
+{% endblock%}
+
+{% block content %}
 {{body|safe}}
 {% endblock %}

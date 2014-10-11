@@ -1,6 +1,32 @@
 body {
 	background-color: #ece8e5;
+	overflow:hidden;
 	}
+body#essays div#content ul{
+	list-style-type:square;
+}
+#essays a {
+}
+
+h1 {
+	font-size:5.9vm;
+}
+
+div#content p
+{ font-size:20px;
+
+}
+div#content ul
+{
+	font-size:20px;
+
+}
+
+#date { 
+	font-size: 90%;
+	margin-bottom:5%;
+	}
+
 .mastwrap {
 display:block;
 }
@@ -17,7 +43,6 @@ margin-right:0;
 .masthead header {
 box-sizing: border-box;
 padding-top: 0px;
-
 padding-left: 12px;
 padding-right: 12px;
 clear: both;
@@ -25,7 +50,7 @@ float: left;
 margin-left:0;
 }
 
-.masthead header a { 
+.masthead header a {
 	color: #fff; font-family:sans-serif;
 	text-transform: uppercase;
 	text-decoration: none;
@@ -36,9 +61,10 @@ margin-left:0;
 nav {
 	height: 40px;
 	width: 100%;
-	float:both;
+	float: both;
 	font-family: 'PT Sans', Arial, sans-serif;
 	}
+
 nav ul {
 	padding: 0;
 	margin: 0;
@@ -65,6 +91,10 @@ nav li a {
 	border-right: 1px solid #576979;
 	box-sizing:border-box;
 	}
+
+nav li:first-child a{
+	border-left:1px solid #576979;
+}
 nav li:last-child a{
 	border-right:0;
 	}

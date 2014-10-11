@@ -3,6 +3,7 @@
 {% block head %} {% endblock%}
 {%block bodyid %}"essays" {%endblock%}
 {% block content%}
+<h1> Essays </h1>
 {% for essay in essays %}
     <ul>    
     <li><a href="/essays/{{essay['url']}}">{{essay['title']}}</a></li>
