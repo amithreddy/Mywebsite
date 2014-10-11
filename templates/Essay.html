@@ -2,15 +2,15 @@
 {% block essaytitle %}{{title}} {% endblock %}
 {% block bodyid%}"essay"{%endblock%}
 
-{% block title %}
+{% block above_content %}
+<div id="title">
 <h1>{{title}}</h1>
-{%endblock%}
-
-{%block date%}
-<div id="date">
-{{date}}<br/>
 </div>
-{% endblock%}
+
+<div id=date>
+{{date}}
+</div>
+{%endblock%}
 
 {% block content %}
 {{body|safe}}

@@ -7,9 +7,8 @@
 {% endblock %} 
 </head>
 <body id={%block bodyid%} {%endblock%}>
-<div class= "content-wrapper">
-	<div class="mastwrap">
-	<div class="masthead">
+	<div id="mastwrap">
+	<div class="wrap" id="masthead">
 	   <header role="banner">
 	   <a href="/" title="Amith M Reddy" rel="home">
 	   Amith M Reddy
@@ -25,19 +24,13 @@
 	</div>
 	</div>
 
-
-	<div>
-	{%block title%}
-	{%endblock %}
+	<div class="wrap">
+	{% block above_content %} {%endblock%}
+	  <div id="content">
+	  {% block content %}
+	  {% endblock %}
+	  </div>
 	</div>
-	{%block date%}
-	{%endblock%}
-
-	<div id="content">
-	{% block content %}
-	{% endblock %}
-	</div>
-</div>
 </body>
 
 </html>
