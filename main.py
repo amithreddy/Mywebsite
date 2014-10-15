@@ -123,10 +123,15 @@ class EditHandler(BasicHandler):
         url = self.request.get('url')
         body = self.request.get('body')
         error= False
+        cookie=self.request.cookies.get('userid')
+        if not verify_cookie(cookie): 
+            self.redirect("/login")
+            return
         if title and body and url:
+
             if args[0] == 'newpost':
                 post = ndb.gql("SELECT * FROM PostModel WHERE url=:url2",
-                        url2=url).get()
+                        url2=url).get().to_dict()
                 if post == None:
                     new_post = PostModel(title =title, body=body,url=url)
                     new_post.put()
