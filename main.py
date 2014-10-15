@@ -4,6 +4,15 @@ import os
 from google.appengine.ext import ndb
 import jinja2
 import json
+import hashlib
+
+def hash_cookie(userid):
+    return hashlib.sha256('userid').hexdigest()
+def verify_cookie(hashed_cookie):
+    if hash_cookie(json.load(open('users.json'))['username']) == hashed_cookie:
+        return True
+    else:
+        return False
 
 JINJA_ESSAY = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname("templates/")),
@@ -41,7 +50,6 @@ class MainHandler(BasicHandler):
     def get(self):
         self.response.out.write('to be implemented')
         cookie=self.request.cookies.get('userid')
-        print cookie
         self.response.out.write('<br/>%s'%cookie)
 class BlogHandler(BasicHandler):
     def get(self,essay_id):
@@ -61,6 +69,7 @@ class EssayList(BasicHandler):
 class LoginHandler(BasicHandler):
     def get(self):
         self.render("Login.html")
+        
     def post(self):
         users=json.load(open("users.json"))
         username=self.request.get("username")
@@ -69,20 +78,26 @@ class LoginHandler(BasicHandler):
         if username == "" or password =="":
             error= "all fields must be filled!"
         elif username==users["username"] and password==users["password"]:
-            #set cookie somehow
             self.response.headers.add_header('Set-Cookie',
-                                        'userid=%s' %str(username))
-            self.response.out.write("correct!")
+                                        'userid=%s' %hash_cookie(username))
+            self.redirect("/essays/edit/")
         else:
             error= "username or password is incorrect"
         if error:
             self.render("Login.html",username=username,error=error)
+
 class LogoutHandler(BasicHandler):
     def get(self):
-        self.response.headers.add_header('Set-Cookie', 'userid=' )
+        self.response.headers.add_header('Set-Cookie', 'userid=')
+        self.redirect("/login")
              
 class EditHandler(BasicHandler):
     def get(self,*args):
+        cookie=self.request.cookies.get('userid')
+        if not verify_cookie(cookie): 
+            self.redirect("/login")
+            return
+
         if args[0] == 'newpost':
             self.response.out.write("<h1>Newpost</h1>")
             self.render("EssayEdit.html", keyid=None)
