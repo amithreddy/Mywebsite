@@ -3,6 +3,7 @@ import time
 import os
 from google.appengine.ext import ndb
 import jinja2
+import json
 
 JINJA_ESSAY = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname("templates/")),
@@ -39,6 +40,9 @@ class BasicHandler(webapp2.RequestHandler):
 class MainHandler(BasicHandler):
     def get(self):
         self.response.out.write('to be implemented')
+        cookie=self.request.cookies.get('userid')
+        print cookie
+        self.response.out.write('<br/>%s'%cookie)
 class BlogHandler(BasicHandler):
     def get(self,essay_id):
         q= ndb.gql("SELECT * FROM PostModel WHERE url=:url2",
@@ -54,7 +58,29 @@ class EssayList(BasicHandler):
         essays = ndb.gql("SELECT * FROM PostModel").fetch(10)
         essays = [essay.to_dict() for essay in essays]
         self.render("EssayFront.html",essays=essays)
-
+class LoginHandler(BasicHandler):
+    def get(self):
+        self.render("Login.html")
+    def post(self):
+        users=json.load(open("users.json"))
+        username=self.request.get("username")
+        password=self.request.get("password")
+        error=None
+        if username == "" or password =="":
+            error= "all fields must be filled!"
+        elif username==users["username"] and password==users["password"]:
+            #set cookie somehow
+            self.response.headers.add_header('Set-Cookie',
+                                        'userid=%s' %str(username))
+            self.response.out.write("correct!")
+        else:
+            error= "username or password is incorrect"
+        if error:
+            self.render("Login.html",username=username,error=error)
+class LogoutHandler(BasicHandler):
+    def get(self):
+        self.response.headers.add_header('Set-Cookie', 'userid=' )
+             
 class EditHandler(BasicHandler):
     def get(self,*args):
         if args[0] == 'newpost':
@@ -126,5 +152,7 @@ app = webapp2.WSGIApplication([
     ('/essays/', EssayList),
     ('/essays', EssayList),
     ('/essays/([^/]+)', BlogHandler),
+    ('/login',LoginHandler),
+    ('/logout',LogoutHandler),
     webapp2.Route(r'/essays/edit/<:[^?/]*>', handler=EditHandler),
 ], debug=True)
