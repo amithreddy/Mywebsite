@@ -1,10 +1,19 @@
-/* line 2, ../sass/test.scss */
+/* line 1, ../sass/test.scss */
 #mastwrap {
   width: 100%;
   background-color: black;
 }
 
-/* line 6, ../sass/test.scss */
+/* line 5, ../sass/test.scss */
+.wrap {
+  margin: auto;
+  padding-left: 0;
+  padding-right: 0;
+  box-sizing: border-box;
+  max-width: 1200px;
+}
+
+/* line 12, ../sass/test.scss */
 #masthead {
   padding-left: 0;
   padding-right: 0;
@@ -13,15 +22,14 @@
   max-width: 1200px;
 }
 
-/* line 14, ../sass/test.scss */
+/* line 20, ../sass/test.scss */
 header {
-  float: right;
   padding-top: 0px;
   float: left;
   margin-left: 0;
   margin-right: 5px;
 }
-/* line 20, ../sass/test.scss */
+/* line 25, ../sass/test.scss */
 header a {
   color: #fff;
   font-family: sans-serif;
@@ -31,29 +39,29 @@ header a {
   font-family: "sofia_pro_lightregular", sans-serif;
 }
 
-/* line 29, ../sass/test.scss */
+/* line 34, ../sass/test.scss */
 nav {
   height: 40px;
   width: 68.5%;
 }
-/* line 33, ../sass/test.scss */
+/* line 38, ../sass/test.scss */
 nav ul {
   margin: 0;
   list-style-type: none;
 }
-/* line 38, ../sass/test.scss */
+/* line 43, ../sass/test.scss */
 nav li {
   float: right;
   display: inline;
   font-size: 100%;
   text-transform: uppercase;
 }
-/* line 44, ../sass/test.scss */
+/* line 49, ../sass/test.scss */
 nav li a {
   border-right: 1px solid #576979;
   box-sizing: border-box;
 }
-/* line 50, ../sass/test.scss */
+/* line 55, ../sass/test.scss */
 nav a {
   color: #fff;
   display: inline-block;
@@ -63,31 +71,22 @@ nav a {
   line-height: 40px;
 }
 
-/* line 60, ../sass/test.scss */
+/* line 65, ../sass/test.scss */
 nav li:first-child a {
   border-left: 1px solid #576979;
 }
 
-/* line 63, ../sass/test.scss */
+/* line 68, ../sass/test.scss */
 nav li:last-child a {
   border-right: 0;
 }
 
-/* line 66, ../sass/test.scss */
+/* line 71, ../sass/test.scss */
 nav a:hover {
   background-color: #8c99a4;
 }
 
-/* line 70, ../sass/test.scss */
+/* line 75, ../sass/test.scss */
 nav a:active {
   background-color: black;
-}
-
-/* line 73, ../sass/test.scss */
-.wrap {
-  margin: auto;
-  padding-left: 0;
-  padding-right: 0;
-  box-sizing: border-box;
-  max-width: 1200px;
 }
