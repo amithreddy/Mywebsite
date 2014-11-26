@@ -1,10 +1,4 @@
-/* line 1, ../sass/test.scss */
-#mastwrap {
-  width: 100%;
-  background-color: black;
-}
-
-/* line 5, ../sass/test.scss */
+/* line 3, ../sass/test.scss */
 .wrap {
   margin: auto;
   padding-left: 0;
@@ -13,23 +7,23 @@
   max-width: 1200px;
 }
 
-/* line 12, ../sass/test.scss */
+/* line 10, ../sass/test.scss */
 #masthead {
   padding-left: 0;
   padding-right: 0;
   margin-left: auto;
   margin-right: auto;
-  max-width: 1200px;
+  background-color: black;
 }
 
-/* line 20, ../sass/test.scss */
+/* line 18, ../sass/test.scss */
 header {
   padding-top: 0px;
   float: left;
   margin-left: 0;
   margin-right: 5px;
 }
-/* line 25, ../sass/test.scss */
+/* line 23, ../sass/test.scss */
 header a {
   color: #fff;
   font-family: sans-serif;
@@ -39,29 +33,29 @@ header a {
   font-family: "sofia_pro_lightregular", sans-serif;
 }
 
-/* line 34, ../sass/test.scss */
+/* line 32, ../sass/test.scss */
 nav {
   height: 40px;
   width: 68.5%;
 }
-/* line 38, ../sass/test.scss */
+/* line 36, ../sass/test.scss */
 nav ul {
   margin: 0;
   list-style-type: none;
 }
-/* line 43, ../sass/test.scss */
+/* line 41, ../sass/test.scss */
 nav li {
   float: right;
   display: inline;
   font-size: 100%;
   text-transform: uppercase;
 }
-/* line 49, ../sass/test.scss */
+/* line 47, ../sass/test.scss */
 nav li a {
   border-right: 1px solid #576979;
   box-sizing: border-box;
 }
-/* line 55, ../sass/test.scss */
+/* line 53, ../sass/test.scss */
 nav a {
   color: #fff;
   display: inline-block;
@@ -71,22 +65,22 @@ nav a {
   line-height: 40px;
 }
 
-/* line 65, ../sass/test.scss */
+/* line 63, ../sass/test.scss */
 nav li:first-child a {
   border-left: 1px solid #576979;
 }
 
-/* line 68, ../sass/test.scss */
+/* line 66, ../sass/test.scss */
 nav li:last-child a {
   border-right: 0;
 }
 
-/* line 71, ../sass/test.scss */
+/* line 69, ../sass/test.scss */
 nav a:hover {
   background-color: #8c99a4;
 }
 
-/* line 75, ../sass/test.scss */
+/* line 73, ../sass/test.scss */
 nav a:active {
   background-color: black;
 }
