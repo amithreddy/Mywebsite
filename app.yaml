@@ -9,8 +9,8 @@ handlers:
   static_files: favicon.ico
   upload: favicon\.ico
 
-- url: /templates/stylesheets
-  static_dir: templates/stylesheets
+- url: /templates/compass/stylesheets
+  static_dir: templates/compass/stylesheets
 
 - url: .*
   script: main.app
