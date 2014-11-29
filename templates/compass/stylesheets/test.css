@@ -6,7 +6,7 @@
   box-sizing: border-box;
 }
 
-/* line 15, ../sass/test.scss */
+/* line 30, ../sass/test.scss */
 .mastwrap {
   max-width: 100%;
   margin-left: auto;
@@ -29,27 +29,32 @@
   clear: both;
 }
 
-/* line 18, ../sass/test.scss */
+/* line 33, ../sass/test.scss */
+body {
+  background-color: white;
+}
+
+/* line 37, ../sass/test.scss */
 .wrap {
   width: 66.10169%;
   margin: 0 auto;
 }
 
-/* line 23, ../sass/test.scss */
+/* line 42, ../sass/test.scss */
 #masthead {
   margin: 0 auto;
-  background-color: black;
+  background-color: #1a1a1a;
 }
 
-/* line 28, ../sass/test.scss */
+/* line 47, ../sass/test.scss */
 header {
-  padding-top: 0px;
   float: left;
   margin: 0 auto;
+  padding-right: 20px;
 }
-/* line 32, ../sass/test.scss */
+/* line 51, ../sass/test.scss */
 header a {
-  color: #fff;
+  color: #d9d9d9;
   font-family: sans-serif;
   text-transform: uppercase;
   text-decoration: none;
@@ -57,30 +62,30 @@ header a {
   font-family: "sofia_pro_lightregular", sans-serif;
 }
 
-/* line 42, ../sass/test.scss */
+/* line 61, ../sass/test.scss */
 nav {
   height: 40px;
   width: 68.5%;
 }
-/* line 46, ../sass/test.scss */
+/* line 65, ../sass/test.scss */
 nav ul {
   margin: 0;
   list-style-type: none;
 }
-/* line 51, ../sass/test.scss */
+/* line 70, ../sass/test.scss */
 nav li {
   float: right;
   display: inline;
   font-size: 100%;
   text-transform: uppercase;
 }
-/* line 57, ../sass/test.scss */
+/* line 76, ../sass/test.scss */
 nav li a {
-  border-right: 1px solid #576979;
+  border-right: 1px solid #5a5a5a;
 }
-/* line 62, ../sass/test.scss */
+/* line 81, ../sass/test.scss */
 nav a {
-  color: #fff;
+  color: #d9d9d9;
   display: inline-block;
   width: 100px;
   text-align: center;
@@ -88,27 +93,27 @@ nav a {
   line-height: 40px;
 }
 
-/* line 72, ../sass/test.scss */
+/* line 91, ../sass/test.scss */
 nav li:first-child a {
-  border-left: 1px solid #576979;
+  border-left: 1px solid #5a5a5a;
 }
 
-/* line 75, ../sass/test.scss */
+/* line 94, ../sass/test.scss */
 nav li:last-child a {
   border-right: 0;
 }
 
-/* line 78, ../sass/test.scss */
+/* line 97, ../sass/test.scss */
 nav a:hover {
-  background-color: #8c99a4;
+  background-color: #5a5a5a;
 }
 
-/* line 82, ../sass/test.scss */
+/* line 101, ../sass/test.scss */
 nav a:active {
-  background-color: black;
+  background-color: #9a9a9a;
 }
 
-/* line 86, ../sass/test.scss */
+/* line 105, ../sass/test.scss */
 #content {
   width: 66.10169%;
   margin: 0 auto;

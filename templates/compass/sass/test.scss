@@ -2,6 +2,21 @@
 @import "compass";
 @import "susy";
 
+$base:#1a1a1a;
+$very_light: lighten($base,10%);
+$light_base:  lighten($base, 25%);
+$lighter_base: lighten($base,50%);
+$lightest_base: lighten($base,75%);
+$pale: lighten($base,90%);
+
+//$accent:
+$page_background: lighten($base, 95%);
+
+$menu: $lighter_base; 
+$menu_text: $lightest_base;
+$menu_border:$light_base;
+$menu_background:$base;
+
 $susy: (
 	global-box-sizing: border-box,
 	columns: 12,
@@ -15,6 +30,10 @@ $susy: (
 .mastwrap {
 @include container;
 }
+body { 
+	background-color:$pale; 
+}
+
 .wrap { 
 	width:span(8);
 	margin: 0 auto;
@@ -22,15 +41,15 @@ $susy: (
 
 #masthead {
 	margin: 0 auto;
-	background-color:black;
+	background-color:$base;
 }
 
 header {
-	padding-top: 0px;
 	float: left;
 	margin:0 auto;
+	padding-right: 20px;
 	a {
-	color: #fff;
+	color: $menu_text; //font color
 	font-family:sans-serif;
 	text-transform: uppercase;
 	text-decoration: none;
@@ -55,12 +74,12 @@ nav {
 	text-transform:uppercase;
 
 		a {
-		border-right: 1px solid #576979;
+		border-right: 1px solid $menu_border;
 			}
 		}
 
 	a {
-	color: #fff;
+	color: $menu_text;
 	display: inline-block;
 	width:100px;
 	text-align: center;
@@ -70,17 +89,17 @@ nav {
 }
 
 nav li:first-child a{
-	border-left:1px solid #576979;
+	border-left:1px solid $menu_border;
 	}
 nav li:last-child a{
 	border-right:0;
 	}
 nav a:hover {
-	background-color: #8c99a4;
+	background-color: $light_base;
 	}
 
 nav a:active{
-	background-color: black;
+	background-color: $lighter_base;
 	}
 
 #content {
