@@ -22,74 +22,63 @@ $susy: (
 	columns: 12,
 	debug: (image:show),
 	use-custom: (rem: true
-		)
+	)
 	);
 
 @include border-box-sizing;
 
-.mastwrap {
-	@include container;
-}
 body { 
+	@include container;
 	background-color:$pale; 
 }
-
-.wrap { 
+.mastwrap {
+}
+.masthead {
 	width:span(8);
+	@include container(8); // match the grib of masthead and body
 }
 
-.masthead {
-	@include container;
+.wrap {
+	width:100%;
 	background-color:$base;
 }
 
 header {
-	float: left;
-	margin:0 auto;
-	padding-left: span(1);
+	margin:auto span(0.25);
 	a {
+	float:left;
+	display:inline-block;
 	color: $menu_text; //font color
-	font-family:sans-serif;
 	text-transform: uppercase;
 	text-decoration: none;
-	font-size: 150%;
+	font-size: 1.5em;
 	font-family: "sofia_pro_lightregular", sans-serif;
+	margin-right:1em; // to give distance between logo and menu
 		}
-}
-
-nav {
 	ul {
-	margin: 0;
         list-style-type:none;
 	}
 
 	li {
-	float:right;
+	float:left;
 	display:inline-block;
 	text-transform:uppercase;
+	margin-top:1.5em-1.0em;
+	margin-right:0.5em; //space the list items
 
 		a {
 		color: $menu_text;
-		border-right: 1px solid $menu_border;
-		text-decoration: none;
+		font-size:1em;
 		}
 	}
 		
+	a:hover{
+		background-color: $light_base;
+	}
+	a:active{
+		background-color: $lighter_base;
+	}
 }
-
-nav li:first-child a{
-	border-left:1px solid $menu_border;
-	}
-nav li:last-child a{
-	border-right:0;
-	}
-nav a:hover {
-	background-color: $light_base;
-	}
-
-nav a:active{
-	background-color: $lighter_base;
-	}
 
 #content {
 	width:span(8);
