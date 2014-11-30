@@ -1,4 +1,4 @@
-@import "./_normalize.css";
+//@import "./_normalize.css";
 @import "compass";
 @import "susy";
 
@@ -8,8 +8,8 @@ $light_base:  lighten($base, 25%);
 $lighter_base: lighten($base,50%);
 $lightest_base: lighten($base,75%);
 $pale: lighten($base,90%);
-
 //$accent:
+
 $page_background: lighten($base, 95%);
 
 $menu: $lighter_base; 
@@ -28,7 +28,7 @@ $susy: (
 @include border-box-sizing;
 
 .mastwrap {
-@include container;
+	@include container;
 }
 body { 
 	background-color:$pale; 
@@ -36,32 +36,28 @@ body {
 
 .wrap { 
 	width:span(8);
-	margin: 0 auto;
 }
 
-#masthead {
-	margin: 0 auto;
+.masthead {
+	@include container;
 	background-color:$base;
 }
 
 header {
 	float: left;
 	margin:0 auto;
-	padding-right: 20px;
+	padding-left: span(1);
 	a {
 	color: $menu_text; //font color
 	font-family:sans-serif;
 	text-transform: uppercase;
 	text-decoration: none;
-	font-size: 30px;
+	font-size: 150%;
 	font-family: "sofia_pro_lightregular", sans-serif;
 		}
 }
 
 nav {
-	height: 40px;
-	width: 68.5%;
-
 	ul {
 	margin: 0;
         list-style-type:none;
@@ -69,23 +65,16 @@ nav {
 
 	li {
 	float:right;
-	display:inline;
-	font-size:100%;
+	display:inline-block;
 	text-transform:uppercase;
 
 		a {
+		color: $menu_text;
 		border-right: 1px solid $menu_border;
-			}
+		text-decoration: none;
 		}
-
-	a {
-	color: $menu_text;
-	display: inline-block;
-	width:100px;
-	text-align: center;
-	text-decoration: none;
-	line-height: 40px;
-		}
+	}
+		
 }
 
 nav li:first-child a{
