@@ -60,7 +60,7 @@ header {
 		margin-top: $header_font/3;
 		margin-bottom:$header_font/3;
 		// to give distance between logo and menu
-		margin-right:$header_font;
+		margin-right:$header_font*3;
 		}
 	ul {
 		margin:0;
@@ -72,10 +72,9 @@ header {
 		float:left;
 		display:inline-block;
 		text-transform:uppercase;
-		margin-top:0.5em;
-		margin-right:0.5em; //space the list items
 
 		a {
+			margin-right:1em; //space the list items
 			color: $menu_text;
 			font-size:1em;
 		}

@@ -76,7 +76,7 @@ header a {
   font-family: "sofia_pro_lightregular", sans-serif;
   margin-top: 0.5em;
   margin-bottom: 0.5em;
-  margin-right: 1.5em;
+  margin-right: 4.5em;
 }
 /* line 65, ../sass/test.scss */
 header ul {
@@ -89,24 +89,23 @@ header li {
   float: left;
   display: inline-block;
   text-transform: uppercase;
-  margin-top: 0.5em;
-  margin-right: 0.5em;
 }
-/* line 78, ../sass/test.scss */
+/* line 76, ../sass/test.scss */
 header li a {
+  margin-right: 1em;
   color: #d9d9d9;
   font-size: 1em;
 }
-/* line 83, ../sass/test.scss */
+/* line 82, ../sass/test.scss */
 header a:hover {
   color: white;
 }
-/* line 86, ../sass/test.scss */
+/* line 85, ../sass/test.scss */
 header a:active {
   color: #9a9a9a;
 }
 
-/* line 91, ../sass/test.scss */
+/* line 90, ../sass/test.scss */
 #content {
   width: 66.10169%;
   margin: 0 auto;
