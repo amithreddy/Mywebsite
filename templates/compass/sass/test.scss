@@ -1,4 +1,3 @@
-//@import "./_normalize.css";
 @import "compass";
 @import "susy";
 
@@ -7,13 +6,15 @@ $very_light: lighten($base,10%);
 $light_base:  lighten($base, 25%);
 $lighter_base: lighten($base,50%);
 $lightest_base: lighten($base,75%);
-$pale: lighten($base,90%);
+$pale_base: lighten($base,90%);
 //$accent:
 
 $page_background: lighten($base, 95%);
 
 $menu: $lighter_base; 
 $menu_text: $lightest_base;
+$menu_hover: $pale_base;
+$menu_press: $lightest_base;
 $menu_border:$light_base;
 $menu_background:$base;
 
@@ -28,8 +29,10 @@ $susy: (
 @include border-box-sizing;
 
 body { 
+	margin:0;
+	padding:0;
 	@include container;
-	background-color:$pale; 
+	background-color:$pale_base; 
 }
 .mastwrap {
 }
@@ -43,45 +46,51 @@ body {
 	background-color:$base;
 }
 
+$header_font: 1.5em;
 header {
-	margin:auto span(0.25);
+	margin:0;
 	a {
-	float:left;
-	display:inline-block;
-	color: $menu_text; //font color
-	text-transform: uppercase;
-	text-decoration: none;
-	font-size: 1.5em;
-	font-family: "sofia_pro_lightregular", sans-serif;
-	margin-right:1em; // to give distance between logo and menu
+		float:left;
+		display:inline-block;
+		color: $menu_text; //font color
+		text-transform: uppercase;
+		text-decoration: none;
+		font-size: $header_font;
+		font-family: "sofia_pro_lightregular", sans-serif;
+		margin-top: $header_font/3;
+		margin-bottom:$header_font/3;
+		// to give distance between logo and menu
+		margin-right:$header_font;
 		}
 	ul {
-        list-style-type:none;
+		margin:0;
+		padding:0;
+		list-style-type:none;
 	}
 
 	li {
-	float:left;
-	display:inline-block;
-	text-transform:uppercase;
-	margin-top:1.5em-1.0em;
-	margin-right:0.5em; //space the list items
+		float:left;
+		display:inline-block;
+		text-transform:uppercase;
+		margin-top:0.5em;
+		margin-right:0.5em; //space the list items
 
 		a {
-		color: $menu_text;
-		font-size:1em;
+			color: $menu_text;
+			font-size:1em;
 		}
 	}
-		
 	a:hover{
-		background-color: $light_base;
+		color: $pale_base;
 	}
 	a:active{
-		background-color: $lighter_base;
+		color: $lighter_base;
 	}
 }
 
 #content {
 	width:span(8);
 	margin: 0 auto;
+	margin-top:3em;
 	clear:both;
 }

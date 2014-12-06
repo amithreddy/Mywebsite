@@ -5,8 +5,10 @@
   box-sizing: border-box;
 }
 
-/* line 30, ../sass/test.scss */
+/* line 31, ../sass/test.scss */
 body {
+  margin: 0;
+  padding: 0;
   max-width: 100%;
   margin-left: auto;
   margin-right: auto;
@@ -29,7 +31,7 @@ body:after {
   clear: both;
 }
 
-/* line 36, ../sass/test.scss */
+/* line 39, ../sass/test.scss */
 .masthead {
   width: 66.10169%;
   max-width: 100%;
@@ -53,17 +55,17 @@ body:after {
   clear: both;
 }
 
-/* line 41, ../sass/test.scss */
+/* line 44, ../sass/test.scss */
 .wrap {
   width: 100%;
   background-color: #1a1a1a;
 }
 
-/* line 46, ../sass/test.scss */
+/* line 50, ../sass/test.scss */
 header {
-  margin: auto 0.42373%;
+  margin: 0;
 }
-/* line 48, ../sass/test.scss */
+/* line 52, ../sass/test.scss */
 header a {
   float: left;
   display: inline-block;
@@ -72,13 +74,17 @@ header a {
   text-decoration: none;
   font-size: 1.5em;
   font-family: "sofia_pro_lightregular", sans-serif;
-  margin-right: 1em;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  margin-right: 1.5em;
 }
-/* line 58, ../sass/test.scss */
+/* line 65, ../sass/test.scss */
 header ul {
+  margin: 0;
+  padding: 0;
   list-style-type: none;
 }
-/* line 62, ../sass/test.scss */
+/* line 71, ../sass/test.scss */
 header li {
   float: left;
   display: inline-block;
@@ -86,23 +92,24 @@ header li {
   margin-top: 0.5em;
   margin-right: 0.5em;
 }
-/* line 69, ../sass/test.scss */
+/* line 78, ../sass/test.scss */
 header li a {
   color: #d9d9d9;
   font-size: 1em;
 }
-/* line 75, ../sass/test.scss */
+/* line 83, ../sass/test.scss */
 header a:hover {
-  background-color: #5a5a5a;
+  color: white;
 }
-/* line 78, ../sass/test.scss */
+/* line 86, ../sass/test.scss */
 header a:active {
-  background-color: #9a9a9a;
+  color: #9a9a9a;
 }
 
-/* line 83, ../sass/test.scss */
+/* line 91, ../sass/test.scss */
 #content {
   width: 66.10169%;
   margin: 0 auto;
+  margin-top: 3em;
   clear: both;
 }
