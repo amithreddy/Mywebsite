@@ -1,6 +1,8 @@
 @import "compass";
 @import "susy";
 
+@import url("http://fonts.googleapis.com/css?family=Alfa+Slab+One|Open+Sans:400italic,700,300,400");
+
 $base:#1a1a1a;
 $very_light: lighten($base,10%);
 $light_base:  lighten($base, 25%);
@@ -21,7 +23,7 @@ $menu_background:$base;
 $susy: (
 	global-box-sizing: border-box,
 	columns: 12,
-	debug: (image:show),
+	//debug: (image:show),
 	use-custom: (rem: true
 	)
 	);
@@ -33,6 +35,15 @@ body {
 	padding:0;
 	@include container;
 	background-color:$pale_base; 
+	h1 {
+		font-family: "Alfa Slab One",cursive;
+		font-weight:400;
+	}
+	p{
+		font-family:"Open Sans", sans-serif;
+
+	}
+
 }
 .mastwrap {
 }
@@ -46,17 +57,17 @@ body {
 	background-color:$base;
 }
 
-$header_font: 1.5em;
+$header_font: 2em;
 header {
 	margin:0;
 	a {
 		float:left;
 		display:inline-block;
 		color: $menu_text; //font color
-		text-transform: uppercase;
 		text-decoration: none;
 		font-size: $header_font;
-		font-family: "sofia_pro_lightregular", sans-serif;
+		font-family: "Alfa Slab One", cursive;
+		font-weight:400;
 		margin-top: $header_font/3;
 		margin-bottom:$header_font/3;
 		// to give distance between logo and menu
