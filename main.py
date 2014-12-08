@@ -14,7 +14,7 @@ def verify_cookie(hashed_cookie):
     else:
         return False
 
-JINJA_ESSAY = jinja2.Environment(
+JINJA = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname("templates/")),
     extensions = ['jinja2.ext.autoescape'],
     autoescape=True)
@@ -27,7 +27,7 @@ class PostModel(ndb.Model):
 
 class BasicHandler(webapp2.RequestHandler):
     def render(self, template_name,**kwargs):
-        template = JINJA_ESSAY.get_template(template_name)
+        template = JINJA.get_template(template_name)
         self.response.out.write(template.render(**kwargs))
     def nav(self,**args):
         nav ="<div id='nav'> ==NAV== </div>"
@@ -51,6 +51,7 @@ class MainHandler(BasicHandler):
         self.response.out.write('to be implemented')
         cookie=self.request.cookies.get('userid')
         self.response.out.write('<br/>%s'%cookie)
+
 class BlogHandler(BasicHandler):
     def get(self,essay_id):
         q= ndb.gql("SELECT * FROM PostModel WHERE url=:url2",
@@ -61,11 +62,13 @@ class BlogHandler(BasicHandler):
             post= q.to_dict()
             self.render("Essay.html",date=post['date'],url=post['url'],
                             body=post['body'],title= post['title'])
+
 class EssayList(BasicHandler):
     def get(self):
         essays = ndb.gql("SELECT * FROM PostModel").fetch(10)
         essays = [essay.to_dict() for essay in essays]
         self.render("EssayFront.html",essays=essays)
+
 class LoginHandler(BasicHandler):
     def get(self):
         self.render("Login.html")
