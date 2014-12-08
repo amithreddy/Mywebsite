@@ -1,2 +1,5 @@
 #ignore .pyc files
 *.pyc
+
+#ignore the username and password file
+users.json
