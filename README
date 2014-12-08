@@ -1,6 +1,11 @@
-This is a blog that will run on amithreddy.com
-This will be used to create essays
+This is the code behind my website at amithreddy.com.
 
+It runs on google appengine. I use it primarily to write blog posts.
 
-When I enter html in jinja it autoescapes it
-after I recieve the text I should print 
+If you want to use this, you have to create a users.json file in the following format:
+
+{
+	"username":"example"
+	"passoword":"password-example"
+	"salt": "a-salt"
+}
