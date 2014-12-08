@@ -48,9 +48,7 @@ class BasicHandler(webapp2.RequestHandler):
 
 class MainHandler(BasicHandler):
     def get(self):
-        self.response.out.write('to be implemented')
-        cookie=self.request.cookies.get('userid')
-        self.response.out.write('<br/>%s'%cookie)
+        self.render("Main.html")
 
 class BlogHandler(BasicHandler):
     def get(self,essay_id):
