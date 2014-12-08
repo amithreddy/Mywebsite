@@ -8,11 +8,11 @@ $very_light: lighten($base,10%);
 $light_base:  lighten($base, 25%);
 $lighter_base: lighten($base,50%);
 $lightest_base: lighten($base,75%);
-$pale_base: lighten($base,90%);
+$pale_base: lighten($base,85%);
 //$accent:
 
-$page_background: lighten($base, 95%);
-
+$page_background: lighten($base, 85%);
+@debug $page_background;
 $menu: $lighter_base; 
 $menu_text: $lightest_base;
 $menu_hover: $pale_base;
@@ -34,7 +34,7 @@ body {
 	margin:0;
 	padding:0;
 	@include container;
-	background-color:$pale_base; 
+	background-color:$page_background; 
 	h1 {
 		font-family: "Alfa Slab One",cursive;
 		font-weight:400;
